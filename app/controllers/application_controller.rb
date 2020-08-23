@@ -9,29 +9,28 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "passwordspassword" 
   end
 
-  get "/" do
+  get '/' do
     erb :index
   end
   
-  get "/animes" do 
-    @animes = Anime.all 
-    erb :animes 
+
+  
+  post '/signup' do 
+    
   end
   
-  get "/sign_up" do 
-    erb :sign_up
-  end
   
-  get "/sign_in" do 
-    erb :sign_in
-  end
   
-  get "/details" do 
+  get '/details' do 
     erb :details
   end
   
-  get "/add_anime" do 
+  get '/add_anime' do 
     erb :add_anime
   end
   
+  helpers do 
+    
+  end
+
 end
