@@ -12,5 +12,10 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
-
+  
+  get "/animes" do 
+    @animes = Anime.all 
+    erb :animes 
+  end
+  
 end
