@@ -5,5 +5,6 @@ class CreateAnimes < ActiveRecord::Migration[5.2]
       t.integer :rating 
       t.string :comments
       t.timestamps
+    end
   end
 end
