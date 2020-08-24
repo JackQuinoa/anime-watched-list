@@ -1,0 +1,1 @@
+User.create!(name: "Jack", password: "Password")
