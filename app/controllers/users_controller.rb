@@ -1,30 +1,30 @@
 class UsersController < ApplicationController 
 
-  get '/signup' do 
-   erb :'users/signup'
+  get '/users/signup' do 
+   erb :'/users/signup'
   end
   
-  post '/signup' do 
+  post '/users/signup' do 
     if params[:name].empty? || params[:password].empty?
-      redirect to '/signup'
+      redirect to '/users/signup'
     else
       @user = User.create(name: params[:name], password: params[:password])
       session[:user_id] = @user.id
-      redirect to '/login'
+      redirect to '/users/login'
     end
   end
   
-  get '/login' do
-    erb :'users/login'   
+  get '/users/login' do
+    erb :'/users/login'   
   end
   
-  post '/login' do 
+  post '/users/login' do 
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to '/animes'
+      redirect to '/users/animes'
     else
-      redirect to '/login'
+      redirect to '/users/login'
     end
   end
   
