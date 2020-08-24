@@ -5,10 +5,7 @@ class UsersController < ApplicationController
   end
   
   post '/signup' do 
-    @user = User.new do |u|
-      u.name = params[:name]
-      u.password = params[:password]
-    end
+    @user = User.new(name: params["name"], password: params["password"])
     redirect to '/login'
   end
   
