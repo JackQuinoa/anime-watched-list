@@ -5,8 +5,13 @@ class UsersController < ApplicationController
   end
   
   post '/signup' do 
-    @user = User.new(name: params["name"], password: params["password"])
-    redirect to '/login'
+    if params[:name].empty? || params[:password].empty?
+      redirect to '/signup'
+    else
+      @user = User.create(name: params[:name], password: params[:password])
+      session[:user_id] = @user.id
+      redirect to '/login'
+    end
   end
   
   get '/login' do
@@ -14,7 +19,13 @@ class UsersController < ApplicationController
   end
   
   post '/login' do 
-    erb :"/animes/animes"
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to '/animes'
+    else
+      redirect to '/login'
+    end
   end
   
 end
