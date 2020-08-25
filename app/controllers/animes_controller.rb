@@ -23,13 +23,13 @@ class AnimesController < ApplicationController
   end
   
   get '/animes/:id/edit' do 
-      @anime = Anime/find_by_id(params[:id])
+      @anime = Anime.find_by_id(params[:id])
       erb :"/animes/edit"
   end
   
   patch '/animes/:id' do 
-    @post = Post.find_by_id(params[:id])
-    @post.update(content :params[:content])
+    @anime = Anime.find_by_id(params[:id])
+    @anime.update(title: params[:title])
     redirect to "/animes/anime_list"
   end
   
