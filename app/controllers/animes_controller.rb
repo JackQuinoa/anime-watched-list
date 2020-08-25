@@ -23,13 +23,27 @@ class AnimesController < ApplicationController
   end
   
   get '/animes/:id/edit' do 
-      @anime = Anime.find_by_id(params[:id])
+    @anime = Anime.find_by_id(params[:id])
+    if @anime.user == current_user   
       erb :"/animes/edit"
+    else 
+      redirect to '/animes/anime_list'
+    end
   end
   
   patch '/animes/:id' do 
     @anime = Anime.find_by_id(params[:id])
-    @anime.update(title: params[:title])
+    if @anime.user == current_user
+      @anime.update(title: params[:title])
+    end
+    redirect to "/animes/anime_list"
+  end
+  
+  delete '/animes/:id' do 
+    @anime = Anime.find_by_id(params[:id])
+    if @anime.user == current_user
+      @anime.delete
+    end
     redirect to "/animes/anime_list"
   end
   

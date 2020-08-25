@@ -1,7 +1,14 @@
 Welcome <%= current_user.name %>. Here is your watched list!
 <% @list.each do |anime| %>
   <p><%= anime.title %></p>
-  <p><a href="/animes/<%= anime.id %>/edit">Edit</a></p>
+  <% if anime.user == current_user %>
+    <p><a href="/animes/<%= anime.id %>/edit">Edit</a></p>
+    <form action="/animes/<%= anime.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete">
+    </form>
+  <% end %>
+
   <% end %>
 
 
