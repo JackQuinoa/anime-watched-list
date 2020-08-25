@@ -1,4 +1,7 @@
 Welcome <%= current_user.name %>. Here is your watched list!
 <% @list.each do |anime| %>
   <p><%= anime.title %></p>
+  
+  <p><a href="/animes" </p>
+  <p><a href="/animes/add_anime"> Add an anime to your list</a></p>
   <% end %>

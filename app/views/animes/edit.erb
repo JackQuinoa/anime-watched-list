@@ -1,0 +1,9 @@
+<h2>  Edit an anime from your list!  </h2>
+
+<form action="/animes/<%= @anime.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="title" value="<%= @anime.title %>">
+  
+  <input type="submit">
+  
+</form>

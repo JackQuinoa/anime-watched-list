@@ -9,4 +9,28 @@ class AnimesController < ApplicationController
     end
   end
   
+  get '/animes/add_anime' do 
+    erb :'/animes/add_anime'
+  end
+  
+  post '/animes/add_anime' do 
+    @anime = current_user.animes.build(params)
+    if @anime.save
+      redirect to '/animes/anime_list'
+    else 
+      erb:'/animes/add_anime'
+    end
+  end
+  
+  get '/animes/:id/edit' do 
+      @anime = Anime/find_by_id(params[:id])
+      erb :"/animes/edit"
+  end
+  
+  patch '/animes/:id' do 
+    @post = Post.find_by_id(params[:id])
+    @post.update(content :params[:content])
+    redirect to "/animes/anime_list"
+  end
+  
 end
