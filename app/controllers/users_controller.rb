@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     else
       @user = User.create(name: params[:name], password: params[:password])
       session[:user_id] = @user.id
-      redirect to '/users/login'
+      redirect to '/animes/anime_list'
     end
   end
-  
+
   get '/users/login' do
     erb :'/users/login'   
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to '/users/animes'
+      redirect to '/animes/anime_list'
     else
       redirect to '/users/login'
     end
