@@ -21,7 +21,7 @@
 <p>Check out other anime titles user's have added to their lists!</p>
 <% @list.each do |anime| %>
   <% if anime.user != current_user %>
-  <p><%= anime.title %></p>
+  <p><%= anime.title %> from <%=anime.user.name %>'s list.</p>
   <% end %>
 <% end %>
   
