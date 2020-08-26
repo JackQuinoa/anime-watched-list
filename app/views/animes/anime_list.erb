@@ -1,4 +1,7 @@
-Welcome <%= current_user.name %>. Here is your watched list!
+<p>Welcome <%= current_user.name %>. Here is your watched list! <a href="/animes/add_anime"> Add an anime to your list</a></p>
+<br>
+<hr>
+
 <% @list.each do |anime| %>
   <p><%= anime.title %></p>
   <% if anime.user == current_user %>
@@ -6,10 +9,18 @@ Welcome <%= current_user.name %>. Here is your watched list!
     <form action="/animes/<%= anime.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
+      <br>
+      <hr>
     </form>
   <% end %>
 
   <% end %>
+  
+  <br>
 
 
-  <p><a href="/animes/add_anime"> Add an anime to your list</a></p>
+ 
+  
+  
+  
+   <p><a href="/users/logout">Logout</a></p>
