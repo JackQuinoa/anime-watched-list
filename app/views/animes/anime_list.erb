@@ -18,9 +18,13 @@
   
   <br>
 
-
- 
+<p>Check out other anime titles user's have added to their lists!</p>
+<% @list.each do |anime| %>
+  <% if anime.user != current_user %>
+  <p><%= anime.title %></p>
+  <% end %>
+<% end %>
   
   
-  
+  <hr>
    <p><a href="/users/logout">Logout</a></p>
