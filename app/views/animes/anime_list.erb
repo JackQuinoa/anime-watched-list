@@ -4,7 +4,7 @@
 
 <% @list.each do |anime| %>
 <% if anime.user == current_user %>
-  <p><%= anime.title %></p>
+  <p><%= anime.title %> | <%anime.rating %> | <%= anime.comments %> </p>
     <p><a href="/animes/<%= anime.id %>/edit">Edit</a></p>
     <form action="/animes/<%= anime.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
