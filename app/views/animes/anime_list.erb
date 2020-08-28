@@ -1,7 +1,10 @@
 <p>Welcome <%= current_user.name %>. Here is your watched list! <a href="/animes/add_anime"> Add an anime to your list</a></p>
 <br>
 <hr>
-
+<% if current_user.animes.empty?%>
+  Your list is empty! Add an anime to your list to get started!
+  <hr>
+  <% else %>
 <% @list.each do |anime| %>
 <% if anime.user == current_user %>
   <p><%= anime.title %> | <%= anime.rating %> | <%= anime.comments %> </p>
@@ -13,7 +16,7 @@
       <hr>
     </form>
   <% end %>
-
+  <% end %>
   <% end %>
   
   <br>
