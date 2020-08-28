@@ -15,7 +15,8 @@ class AnimesController < ApplicationController
   
   post '/animes/add_anime' do 
     @anime = current_user.animes.build(params)
-    if @anime.save
+    if params[:rating].to_i.between?(1,10) && !params[:title].empty?
+      @anime.save
       redirect to '/animes/anime_list'
     else 
       erb:'/animes/add_anime'
@@ -33,8 +34,8 @@ class AnimesController < ApplicationController
   
   patch '/animes/:id' do 
     @anime = Anime.find_by_id(params[:id])
-    if @anime.user == current_user
-      @anime.update(title: params[:title])
+    if @anime.user == current_user && params[:rating].to_i.between?(1,10) && !params[:title].empty?
+      @anime.update(title: params[:title], rating: params[:rating], comments: params[:comments])
     end
     redirect to "/animes/anime_list"
   end
