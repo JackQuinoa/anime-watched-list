@@ -49,3 +49,5 @@ class AnimesController < ApplicationController
   end
   
 end
+
+#write a custom route called /animes/newest that when visited by the user shows them the most recently added anime in the database 
