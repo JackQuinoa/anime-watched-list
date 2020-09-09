@@ -1,12 +1,12 @@
 class UsersController < ApplicationController 
 
-  get '/users/signup' do 
-   erb :'/users/signup'
+  get '/users/new' do 
+   erb :'/users/new'
   end
   
-  post '/users/signup' do 
+  post '/users/new' do 
     if params[:name].empty? || params[:password].empty?
-      redirect to '/users/signup'
+      redirect to '/users/new'
     else
       @user = User.create(name: params[:name], password: params[:password])
       session[:user_id] = @user.id

@@ -9,17 +9,17 @@ class AnimesController < ApplicationController
     end
   end
   
-  get '/animes/add_anime' do 
-    erb :'/animes/add_anime'
+  get '/animes/new' do 
+    erb :'/animes/new'
   end
   
-  post '/animes/add_anime' do 
+  post '/animes' do 
     @anime = current_user.animes.build(params)
     if params[:rating].to_i.between?(1,10) && !params[:title].empty?
       @anime.save
       redirect to '/animes/anime_list'
     else 
-      erb:'/animes/add_anime'
+      erb:'/animes/new'
     end
   end
   
