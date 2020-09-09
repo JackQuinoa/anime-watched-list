@@ -1,9 +1,9 @@
 class AnimesController < ApplicationController 
   
-  get '/animes/anime_list' do 
+  get '/animes' do 
     if logged_in?
       @list = Anime.all 
-      erb :'/animes/anime_list'
+      erb :'/animes'
     else 
       redirect to '/users/login'
     end
@@ -17,7 +17,7 @@ class AnimesController < ApplicationController
     @anime = current_user.animes.build(params)
     if params[:rating].to_i.between?(1,10) && !params[:title].empty?
       @anime.save
-      redirect to '/animes/anime_list'
+      redirect to '/animes'
     else 
       erb:'/animes/new'
     end
@@ -28,7 +28,7 @@ class AnimesController < ApplicationController
     if @anime.user == current_user   
       erb :"/animes/edit"
     else 
-      redirect to '/animes/anime_list'
+      redirect to '/animes'
     end
   end
   
@@ -37,7 +37,7 @@ class AnimesController < ApplicationController
     if @anime.user == current_user && params[:rating].to_i.between?(1,10) && !params[:title].empty?
       @anime.update(title: params[:title], rating: params[:rating], comments: params[:comments])
     end
-    redirect to "/animes/anime_list"
+    redirect to "/animes"
   end
   
   delete '/animes/:id' do 
@@ -45,7 +45,7 @@ class AnimesController < ApplicationController
     if @anime.user == current_user
       @anime.delete
     end
-    redirect to "/animes/anime_list"
+    redirect to "/animes"
   end
   
 end
