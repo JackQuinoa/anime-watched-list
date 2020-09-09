@@ -47,7 +47,12 @@ class AnimesController < ApplicationController
     end
     redirect to "/animes"
   end
+
+  get '/animes/newest' do 
+    erb :'/animes/newest'
+  end
   
 end
+
 
 #write a custom route called /animes/newest that when visited by the user shows them the most recently added anime in the database AND update RESTful routes to standard

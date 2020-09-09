@@ -1,4 +1,4 @@
-<p>Welcome <%= current_user.name %>. Here is your watched list! <a href="/animes/new"> Add an anime to your list</a></p>
+<p>Welcome <%= current_user.name %>. Here is your watched list! <a href="/animes/new"> Add an anime to your list</a> <a href="/animes/newest"> Check out the newest added anime to a user's list</a></p>
 <br>
 <hr>
 <% if current_user.animes.empty?%>
