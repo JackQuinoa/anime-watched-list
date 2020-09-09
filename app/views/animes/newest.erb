@@ -1,9 +1,14 @@
-<p><h2>Here's the newest added anime!</h2>
+<p><h2>Here's the newest added anime!</h2></p>
 
   <% @most_recent = @list.sort_by { |anime| anime[:created_at] }[-1] %> 
-  <p> <%= @most_recent.title %> from <%= @most_recent.user.name %>'s list.</p>
-  
-<hr>
-<a href="/animes"> Go back to your watched list </a></p>
+  <% if @most_recent.user == current_user %>
+    <p> <%= @most_recent.title %> from your list!</p>
+  <% else %>
+    <p> <%= @most_recent.title %> from <%= @most_recent.user.name %>'s list! </p>
+  <% end %>
+   
+<hr> 
+<br> 
 
+<a href="/animes"> Go back to your watched list </a>
 
