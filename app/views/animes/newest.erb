@@ -1,8 +1,10 @@
 <p><h2>Here's the newest added anime!</h2>
 <br>
 
-
-
+<% @list = Anime.all %> 
+  <% @sorted_list = @list.sort_by { |anime| anime[:created_at] } %> 
+    <p> <%= @sorted_list[-1].title %> </p>
+    
 <hr>
 <a href="/animes"> Go back to your watched list </a></p>
 
